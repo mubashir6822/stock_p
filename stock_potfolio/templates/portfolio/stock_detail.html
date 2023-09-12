@@ -1,0 +1,48 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Home - My Portfolio App{% endblock %}
+{% block content %}
+    <!-- portfolio/templates/portfolio/stock_detail.html -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ stock.name }} Details</title>
+        <style>
+            /* Add CSS styles here to style the detail page */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+            .container {
+                padding: 20px;
+                background-color: ;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin: 20px;
+            }
+            h1 {
+                color: #007bff;
+            }
+            .action-button {
+                background-color: #007bff;
+                color: white;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ stock.name }} Details</h1>
+            <p><strong>Symbol:</strong> {{ stock.symbol }}</p>
+            <p><strong>Price:</strong> {{ stock.price }}</p>
+            <a href="{% url 'stock_list' %}" class="action-button">Back to Stock List</a>
+        </div>
+    </body>
+    </html>
+{% endblock %}
+

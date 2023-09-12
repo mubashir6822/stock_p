@@ -1,0 +1,120 @@
+<!-- portfolio/templates/portfolio/stock_list.html -->
+{% extends "portfolio/base.html" %}
+{% block title %}Stock List - My Portfolio App{% endblock %}
+{% block content %}
+    <!-- portfolio/templates/portfolio/stock_list.html -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Stock List</title>
+        <style>
+\
+            h2 {
+                font-size: 20px;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+           
+
+            ul li strong {
+                font-weight: bold;
+            }
+
+            ul li p {
+                margin: 5px 0;
+            }
+
+            /* Style for the Add New Stock button */
+            .action-button {
+                background-color: #007bff;
+                color: white;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+                margin-top: 20px;
+                display: inline-block;
+            }
+
+            /* Style for the entire container */
+            .container {
+                background-color: #f9f9f9;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin: 20px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>Stock List</h1>
+            <!-- Stock Table -->
+            <table>
+                <!-- Table headers here (as in your existing code) -->
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in stocks %}
+                        <tr>
+                            <td>{{ stock.symbol }}</td>
+                            <td>{{ stock.name }}</td>
+                            <td>{{ stock.price }}</td>
+                            <td>
+                                <a href="{% url 'stock_detail' stock.id %}" class="action-button">View</a>
+                                <a href="{% url 'stock_update' stock.id %}" class="action-button">Edit</a>
+                                <a href="{% url 'stock_delete' stock.id %}" class="action-button">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{% url 'stock_create' %}" class="action-button">Add New Stock</a>
+
+            <!-- Holdings Section -->
+            <h2>Holdings</h2>
+            <ul>
+                <!-- Display holdings data here -->
+                {% for holding in holdings %}
+                    <li>{{ holding.stock.name }} - Quantity: {{ holding.quantity }}, Value: ${{ holding.value }}</li>
+                {% endfor %}
+            </ul>
+
+            <!-- Stock Status Section -->
+            <h2>Stock Status</h2>
+            <ul>
+                <!-- Display stock status data here -->
+                {% for status in stock_statuses %}
+                    <li>{{ status.stock.name }} - Status: {{ status.status }}</li>
+                {% endfor %}
+            </ul>
+
+            <!-- Stock News Section -->
+            <h2>Stock News</h2>
+            <ul>
+                <!-- Display stock news data here -->
+                {% for news in stock_news %}
+                    <li><strong>{{ news.title }}</strong> - {{ news.date }}</li>
+                    <p>{{ news.content }}</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+    </html>
+
+{% endblock %}

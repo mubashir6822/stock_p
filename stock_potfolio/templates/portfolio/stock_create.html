@@ -1,0 +1,71 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Home - My Portfolio App{% endblock %}
+{% block content %}
+    <!-- portfolio/templates/portfolio/stock_create.html -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add New Stock</title>
+        <style>
+            /* Add CSS styles here to style the create page */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+            .container {
+                padding: 20px;
+                background-color: ;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin: 20px;
+            }
+            h1 {
+                color: #007bff;
+            }
+            .form-container {
+                text-align: left;
+            }
+            .form-group {
+                margin-bottom: 20px;
+            }
+            .form-group label {
+                font-weight: bold;
+            }
+            .action-button {
+                background-color: #007bff;
+                color: white;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Add New Stock</h1>
+            <form method="post" class="form-container">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_symbol">Symbol:</label>
+                    {{ form.symbol }}
+                </div>
+                <div class="form-group">
+                    <label for="id_name">Name:</label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="id_price">Price:</label>
+                    {{ form.price }}
+                </div>
+                <button type="submit" class="action-button">Save</button>
+            </form>
+            <a href="{% url 'stock_list' %}" class="action-button">Cancel</a>
+        </div>
+    </body>
+    </html>
+
+{% endblock %}

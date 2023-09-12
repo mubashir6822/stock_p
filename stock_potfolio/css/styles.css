@@ -1,0 +1,22 @@
+/* portfolio/static/portfolio/css/styles.css */
+.stock-list-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.stock-section, .status-section, .news-section, .holding-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stock-list, .status-list, .news-list, .holding-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.stock-list li, .status-list li, .news-list li, .holding-list li {
+    margin: 5px 0;
+}

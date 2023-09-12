@@ -1,0 +1,55 @@
+{% extends "portfolio/base.html" %}
+{% block title %}Home - My Portfolio App{% endblock %}
+{% block content %}
+<!-- portfolio/templates/portfolio/home.html -->
+    {% load static %} <!-- Load the static template tag library -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <style>
+            /* Add CSS styles here to style the home page */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                text-align: center;
+            }
+            .container {
+                padding: 20px;
+                background-color: ;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                margin: 20px;
+            }
+            h1 {
+                color: #007bff;
+            }
+            .action-button {
+                background-color: #007bff;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+                margin-right: 10px;
+            }
+            .interactive-image {
+                max-width: 400px; /* Adjust the maximum width as needed */
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to My Stock Portfolio App</h1>
+            <p>This is the home page of our application.</p>
+            <img src='https://www.analyticsinsight.net/wp-content/uploads/2021/09/Artificial-Intelligence-Stocks.png'  alt="Stock Image" class="interactive-image">
+            <p>Explore the world of stocks and manage your portfolio.</p>
+            <a href="{% url 'stock_list' %}" class="action-button">View Stocks</a>
+            <a href="{% url 'stock_create' %}" class="action-button">Add New Stock</a>
+        </div>
+    </body>
+    </html>
+{% endblock %}

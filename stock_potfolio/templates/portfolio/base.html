@@ -1,0 +1,95 @@
+{% load static %}
+<!-- portfolio/templates/portfolio/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Portfolio App{% endblock %}</title>
+    <style>
+        /* Add CSS styles for the background image and navigation bar */
+        body {
+            background-image: url("https://example.com/images/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Navigation bar styles */
+        .navbar {
+            background-color: gray; /* Change the background color to gray */
+            overflow: hidden;
+            padding: 15px 0; /* Increase top and bottom padding for height */
+        }
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar li {
+            margin: 0 15px;
+            position: relative;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #007bff;
+        }
+        /* Dropdown menu styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: gray;
+            min-width: 160px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Stocks</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'stock_list' %}">View Stocks</a>
+                    <a href="{% url 'stock_create' %}">Add New Stock</a>
+                    <!-- Add more stock-related actions as needed -->
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">Portfolio</a>
+                <div class="dropdown-content">
+                    <a href="#">View Portfolio</a>
+                    <a href="#">Add to Portfolio</a>
+                    <!-- Add more portfolio-related actions as needed -->
+                </div>
+            </li>
+            <!-- Add more navigation items and dropdown menus as needed -->
+        </ul>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
